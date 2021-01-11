@@ -11,7 +11,12 @@ const DEBUG = false
 
 addEventListener('fetch', event => {
   try {
-    event.respondWith(handleEvent(event))
+    var meth = event.request.method
+    if (meth === "GET") return event.respondWith(handleEvent(event))
+     if (meth === "PUT") return event.respondWith(new Response(JSON.stringify(['PUT']), { headers: { 'content-type': 'application/json' }}))//handleEvent(event))
+
+    if (meth === "POST") return event.respondWith(new Response(JSON.stringify(['POST']), { headers: { 'content-type': 'application/json' }}))//handleEvent(event))
+
   } catch (e) {
     if (DEBUG) {
       return event.respondWith(

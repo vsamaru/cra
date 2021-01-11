@@ -12,10 +12,10 @@ const DEBUG = false
 addEventListener('fetch', event => {
   try {
     var meth = event.request.method
-    if (meth === "GET") return event.respondWith(new Response(JSON.stringify(['GET']), { headers: { 'content-type': 'application/json' }}))
-     if (meth === "PUT") return event.respondWith(new Response(JSON.stringify(['PUT']), { headers: { 'content-type': 'application/json' }}))//handleEvent(event))
+    if (meth === "GET") return event.respondWith(handleEvent(event))
+     if (meth === "PUT") return event.respondWith(new Response(JSON.stringify(['PUT']), { headers: { 'content-type': 'application/json' }}))
 
-    if (meth === "POST") return event.respondWith(new Response(JSON.stringify(['POST']), { headers: { 'content-type': 'application/json' }}))//handleEvent(event))
+    if (meth === "POST") return event.respondWith(new Response(JSON.stringify(['POST']), { headers: { 'content-type': 'application/json' }}))
 
   } catch (e) {
     if (DEBUG) {
